@@ -64,7 +64,7 @@ std::string CLPApplication::operator()(int argc, const char** argv) {
 
 std::string CLPApplication::help() {
   std::string help =
-      "This program considers the integral";
+      "This program solves matrix";
   return help;
 }
 
