@@ -6,22 +6,22 @@
 #include <string>
 #include <utility>
 
-Polygon::Polygon() { vertex_num = 0; }
+Polygon::Polygon() {}
 
-void Polygon::addVertex(std::pair<double, double> new_vertex) {
-  for (int i = 0; i < vertex_num; i++)
+int const Polygon::getVertexNum() { return this->vertexes.size(); }
+
+void Polygon::addVertex(const std::pair<double, double>& new_vertex) {
+  for (int i = 0; i < getVertexNum(); i++)
     if (vertexes[i] == new_vertex)
       throw std::string("This vertex already exists");
   vertexes.push_back(new_vertex);
-  vertex_num++;
 }
 
 void Polygon::deleteVertex(std::pair<double, double> vertex) {
   bool f = 0;
-  for (int i = 0; i < vertex_num; i++)
+  for (int i = 0; i < getVertexNum(); i++)
     if (vertexes[i] == vertex) {
       vertexes.erase(vertexes.begin() + i);
-      vertex_num--;
       f = 1;
       break;
     }
@@ -29,19 +29,19 @@ void Polygon::deleteVertex(std::pair<double, double> vertex) {
 }
 
 void Polygon::deleteVertexByNumber(int number) {
-  if (number < 0 || number > vertex_num || vertex_num == 0) {
+  if (number < 0 || number > getVertexNum() || getVertexNum() == 0) {
     throw std::string("This vertex doesn't exist");
   } else {
     vertexes.erase(vertexes.begin() + number);
-    vertex_num--;
   }
 }
 
 double Polygon::countPolygonArea() {
-  if (vertex_num < 3) throw std::string("It's not a polygon. Add more points");
+  if (getVertexNum() < 3)
+    throw std::string("It's not a polygon. Add more points");
   double s = 0, sum1 = 0, sum2 = 0;
   vertexes.push_back(vertexes[0]);
-  for (int i = 0; i < vertex_num; i++) {
+  for (int i = 0; i < getVertexNum() - 1; i++) {
     sum1 += vertexes[i].first * vertexes[i + 1].second;
     sum2 += vertexes[i].second * vertexes[i + 1].first;
   }

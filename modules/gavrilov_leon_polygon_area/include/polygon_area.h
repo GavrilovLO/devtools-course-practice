@@ -7,11 +7,13 @@
 #include <vector>
 
 class Polygon {
- public:
-  int vertex_num;
+ private:
   std::vector<std::pair<double, double>> vertexes;
+
+ public:
   Polygon();
-  void addVertex(std::pair<double, double> new_vertex);
+  int const getVertexNum();
+  void addVertex(const std::pair<double, double>& vertex);
   void deleteVertex(std::pair<double, double> vertex);
   void deleteVertexByNumber(int number);
   double countPolygonArea();

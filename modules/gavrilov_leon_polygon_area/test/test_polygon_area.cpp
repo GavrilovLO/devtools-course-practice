@@ -12,7 +12,7 @@ TEST(Gavrilov_Leon_PolygonAreaTest, can_create_polygon) {
 
 TEST(Gavrilov_Leon_PolygonAreaTest, new_polygon_has_0_vertex) {
   Polygon p;
-  EXPECT_EQ(0, p.vertex_num);
+  EXPECT_EQ(0, p.getVertexNum());
 }
 
 TEST(Gavrilov_Leon_PolygonAreaTest, can_add_vertex) {
@@ -27,7 +27,7 @@ TEST(Gavrilov_Leon_PolygonAreaTest, add_vertex_change_vertex_num) {
   double x = 1.5, y = 2.5;
   std::pair<double, double> vertex(x, y);
   p.addVertex(vertex);
-  EXPECT_EQ(1, p.vertex_num);
+  EXPECT_EQ(1, p.getVertexNum());
 }
 
 TEST(Gavrilov_Leon_PolygonAreaTest, cant_add_existing_vertex) {
@@ -54,7 +54,7 @@ TEST(Gavrilov_Leon_PolygonAreaTest, delete_vertex_change_vertex_num) {
   p.addVertex(vertex1);
   p.addVertex(vertex2);
   p.deleteVertex(vertex1);
-  EXPECT_EQ(1, p.vertex_num);
+  EXPECT_EQ(1, p.getVertexNum());
 }
 
 TEST(Gavrilov_Leon_PolygonAreaTest, cant_delete_not_existing_vertex) {
